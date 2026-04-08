@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HEIC Pro</title>
+</head>
+<body>
+  <h2>HEIC → JPG Converter</h2>
+
+  <button onclick="pickFiles()">Select Files</button>
+  <button onclick="pickFolder()">Select Output Folder</button>
+
+  <p id="info"></p>
+
+  <button onclick="convert()">Convert</button>
+
+  <div style="width:80%;background:#ddd;height:20px;margin:20px auto;">
+    <div id="bar" style="height:100%;width:0;background:green;"></div>
+  </div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
