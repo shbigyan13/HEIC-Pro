@@ -2,10 +2,10 @@ const { app, BrowserWindow, ipcMain, dialog } = require("electron");
 const path = require("path");
 const sharp = require("sharp");
 
-let win;
+let mainWindow;
 
 function createWindow() {
-  win = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -13,13 +13,13 @@ function createWindow() {
     }
   });
 
-  win.loadFile("index.html");
+  mainWindow.loadFile("index.html");
 }
 
 app.whenReady().then(createWindow);
 
 ipcMain.handle("select-files", async () => {
-  const result = await dialog.showOpenDialog({
+  const result = await dialog.showOpenDialog(mainWindow, {
     properties: ["openFile", "multiSelections"],
     filters: [{ name: "Images", extensions: ["heic"] }]
   });
@@ -27,7 +27,7 @@ ipcMain.handle("select-files", async () => {
 });
 
 ipcMain.handle("select-folder", async () => {
-  const result = await dialog.showOpenDialog({
+  const result = await dialog.showOpenDialog(mainWindow, {
     properties: ["openDirectory"]
   });
   return result.filePaths[0];
@@ -46,7 +46,7 @@ ipcMain.handle("convert-batch", async (event, { files, outputDir }) => {
       .toFile(outPath);
 
     completed++;
-    win.webContents.send("progress", {
+    mainWindow.webContents.send("progress", {
       completed,
       total: files.length
     });
