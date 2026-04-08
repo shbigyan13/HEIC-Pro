@@ -6,6 +6,8 @@
 <body>
   <h2>HEIC → JPG Converter</h2>
 
+  <div id="dropZone">Drag & Drop HEIC Files Here</div>
+  
   <button onclick="pickFiles()">Select Files</button>
   <button onclick="pickFolder()">Select Output Folder</button>
 
@@ -13,8 +15,8 @@
 
   <button onclick="convert()">Convert</button>
 
-  <div style="width:80%;background:#ddd;height:20px;margin:20px auto;">
-    <div id="bar" style="height:100%;width:0;background:green;"></div>
+  <div id="progressBar">
+    <div id="progress"></div>
   </div>
 
 <script src="renderer.js"></script>
