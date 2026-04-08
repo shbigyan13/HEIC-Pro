@@ -1,0 +1,24 @@
+body {
+  font-family: Arial;
+  text-align: center;
+}
+
+#dropZone {
+  border: 2px dashed #888;
+  padding: 40px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+#progressBar {
+  width: 80%;
+  height: 20px;
+  background: #ddd;
+  margin: 20px auto;
+}
+
+#progress {
+  height: 100%;
+  width: 0%;
+  background: green;
+}
