@@ -1,0 +1,26 @@
+name: Build EXE
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+      - run: npx electron-builder --win portable
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: heic-pro
+          path: dist/*.exe
